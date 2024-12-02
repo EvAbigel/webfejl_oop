@@ -20,8 +20,8 @@ Player.prototype.getTierLvl = function(){
     }
 }
 
-function printTierLevel(nick, lvl){
-    console.log(nick + " has " + lvl + " rank");
+function printTierLevel(creature){
+    console.log(creature.nickname + " has " + creature.getTierLvl() + " rank");
 }
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -33,4 +33,4 @@ player.play();
 player.play();
 console.log(player.getTierLvl());
 console.log(player);
-printTierLevel(player.nickname, player.getTierLvl());
+printTierLevel(player);
