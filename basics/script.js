@@ -26,21 +26,17 @@ function printTierLevel(creature){
     console.log(creature.nickname + " has " + creature.getTierLvl() + " rank");
 }
 
-class Person{
-    constructor (){
-        this.name = "Géza";
-    }
-
-    getName(){
-        return this.name;
-    }
+function Person(name){
+    this.name = name;
 }
 
-class Student{
-    constructor(school){
-        this.name = "Géza";
-        this.school = school;
-    }
+Person.prototype.getName = function(){
+    return this.name;
+};
+
+function Student(name, school){
+    Person.call(this, name);
+    this.school = school;
 }
 
 Object.setPrototypeOf(Student.prototype, Person.prototype);
@@ -57,6 +53,7 @@ console.log(player.getTierLvl());
 console.log(player);
 printTierLevel(player);
 
-const student = new Student("Hartyán")
+const student = new Student("Géza", "Hartyán");
 console.log(student.name);
 console.log(student.getName());
+console.log(student.school);
