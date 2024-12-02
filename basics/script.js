@@ -26,21 +26,6 @@ function printTierLevel(creature){
     console.log(creature.nickname + " has " + creature.getTierLvl() + " rank");
 }
 
-/*function Person(name){
-    this.name = name;
-}
-
-Person.prototype.getName = function(){
-    return this.name;
-};
-
-function Student(name, school){
-    Person.call(this, name);
-    this.school = school;
-}
-
-Object.setPrototypeOf(Student.prototype, Person.prototype);*/
-
 class Person{
     constructor(name){
         this.name = name;
@@ -55,6 +40,32 @@ class Student extends Person{
     constructor(name, school){
         super(name);
         this.school = school;
+    }
+}
+
+class Animal{
+    constructor(name, sound){
+        this.name = name;
+        this.sound = sound;
+        this.action = "resting"
+    }
+
+    getAction(){
+        console.log("The " + this.name+ " is " + this.action + " while " + this.sound);
+    }
+}
+
+class Bird extends Animal{
+    constructor(name,sound){
+        super(name, sound);
+        this.action = "flying";
+    }
+}
+
+class Mammal extends Animal{
+    constructor(name,sound){
+        super(name, sound);
+        this.action = "standing";
     }
 }
 
@@ -74,4 +85,12 @@ const student = new Student("Géza", "Hartyán");
 console.log(student.name);
 console.log(student.getName());
 console.log(student.school);
+
+const animal = new Bird("parrot", "chirping");
+animal.getAction();
+const animal2 = new Mammal("dog", "barking");
+animal2.getAction();
+const animal3 = new Animal("cat", "meowing");
+animal3.getAction();
+
 
