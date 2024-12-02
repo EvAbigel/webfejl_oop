@@ -5,14 +5,14 @@ function Player(nick){
 
 Player.prototype.play = function(){
     this.playedMatch += 1;
-    console.log(this.nickname + " played " + this.playedMatch + " matches")
+    console.log(this.nickname + " had played " + this.playedMatch + " matches")
 }
 
 Player.prototype.getTierLvl = function(){
-    if (Player.playedMatch <= 3 ){
+    if (this.playedMatch <= 3 ){
         return "A";
     }
-    else if (Player.playedMatch >= 3 && Player.playedMatch <= 6){
+    else if (this.playedMatch >= 3 && this.playedMatch <= 6){
         return "B";
     }
     else{
@@ -23,3 +23,13 @@ Player.prototype.getTierLvl = function(){
 function printTierLevel(nick, lvl){
     console.log(nick + " has " + lvl + "rank");
 }
+
+
+const player = new Player("evbabi");
+
+player.play();
+player.play();
+player.play();
+player.play();
+console.log(player.getTierLvl());
+console.log(player);
