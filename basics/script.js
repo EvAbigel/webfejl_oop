@@ -20,3 +20,6 @@ Player.prototype.getTierLvl = function(){
     }
 }
 
+function printLevel(nick, lvl){
+    console.log(nick + " has " + lvl + "rank");
+}
