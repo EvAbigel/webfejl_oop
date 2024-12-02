@@ -21,15 +21,16 @@ Player.prototype.getTierLvl = function(){
 }
 
 function printTierLevel(nick, lvl){
-    console.log(nick + " has " + lvl + "rank");
+    console.log(nick + " has " + lvl + " rank");
 }
 
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
 const player = new Player("evbabi");
 
 player.play();
 player.play();
 player.play();
-player.play();
 console.log(player.getTierLvl());
 console.log(player);
+printTierLevel(player.nickname, player.getTierLvl());
