@@ -26,7 +26,7 @@ function printTierLevel(creature){
     console.log(creature.nickname + " has " + creature.getTierLvl() + " rank");
 }
 
-function Person(name){
+/*function Person(name){
     this.name = name;
 }
 
@@ -39,7 +39,24 @@ function Student(name, school){
     this.school = school;
 }
 
-Object.setPrototypeOf(Student.prototype, Person.prototype);
+Object.setPrototypeOf(Student.prototype, Person.prototype);*/
+
+class Person{
+    constructor(name){
+        this.name = name;
+    }
+
+    getName(){
+        return this.name;
+    }
+}
+
+class Student extends Person{
+    constructor(name, school){
+        super(name);
+        this.school = school;
+    }
+}
 
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
@@ -57,3 +74,4 @@ const student = new Student("Géza", "Hartyán");
 console.log(student.name);
 console.log(student.getName());
 console.log(student.school);
+
