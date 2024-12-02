@@ -8,3 +8,15 @@ Player.prototype.play = function(){
     console.log(this.nickname + " played " + this.playedMatch + " matches")
 }
 
+Player.prototype.getTierLvl = function(){
+    if (Player.playedMatch <= 3 ){
+        return "A";
+    }
+    else if (Player.playedMatch >= 3 && Player.playedMatch <= 6){
+        return "B";
+    }
+    else{
+        return "C";
+    }
+}
+
