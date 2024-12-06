@@ -8,17 +8,18 @@ class Factory{
     addMano(mano){
         this.manoklista.push(mano);
         createRow(mano);
-        console.log(this.manoklista);
     }
 
-    
+    createId(){
+        return this.manoklista.length;
+    }
 
 }
 
 class Companion{
  
-    constructor(i1d, kereszt, vezetek, reszleg){
-        this.id = i1d;
+    constructor(id, kereszt, vezetek, reszleg){
+        this.id = id;
         this.keresztnev = kereszt;
         this.vezeteknev = vezetek;
         this.reszleg = reszleg;
