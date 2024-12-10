@@ -7,6 +7,7 @@ function createRow(companion){
     const table = document.getElementById('companions');
     const tbody = table.querySelector('tbody');
     const tableRow = document.createElement('tr');
+    tableRow.id = companion.id;
     tbody.appendChild(tableRow);
 
    // TODO 7
@@ -66,6 +67,9 @@ function refreshProductList(companion){ //TODO
     const productTableBody = productTable.querySelector('tbody')
     productTableBody.innerHTML = '';
     // TODO 10
+    companionName.innerHTML = companion.getName();
+    productTable.p
+
 }
 
 /**
@@ -104,4 +108,38 @@ function addProductForm(form, factory){ // TODO
     const companionId = selector.value;
     const product = productName.value;
     // 12
+}
+
+/**
+ * table render
+ */
+function initTable(){
+
+    // TODO 6
+    for (let i = 0; i < companionList.length; i++){ //végigiterálunk a companionlisten
+        const mano = companionList[i] //az i-edik eemet változóba mentjük
+        const tmpcomp = new Companion(i, mano.firstName, mano.lastName, mano.area); //a változóval megcsináljunk a compaiont
+
+        for (const product of mano.products){ //a manó objektum product tömbjén megy végig
+            tmpcomp.addProduct(product) //hozzáadja a products tömbhöz a productot
+        }
+
+        //console.log(tmpcomp.showManoName());
+        //console.log(tmpcomp);
+
+        factory.addMano(tmpcomp);
+    }
+}
+
+
+/**
+ * 
+ * eventlistener callback for the button click of companion
+ * 
+ * @param {EventTarget} e 
+ */
+function checkEventListener(e){
+    const row = e.currentTarget.parentElement.parentElement;
+    const companionId = row.id;
+    // TODO 10
 }
