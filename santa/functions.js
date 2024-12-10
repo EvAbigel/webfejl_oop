@@ -50,28 +50,6 @@ function appendToSelector(){
     selector.appendChild(option);
 }
 
-
-/**
- * 
- * Refresh the productlist table
- * 
- * @param {Companion} companion 
- */
-function refreshProductList(companion){ //TODO
-
-    const companionName = document.getElementById('companion_name');
-    // TODO 10
-    companionName.style.display = 'block';
-    const productTable = document.getElementById('products');
-    productTable.style.display = 'table';
-    const productTableBody = productTable.querySelector('tbody')
-    productTableBody.innerHTML = '';
-    // TODO 10
-    companionName.innerHTML = companion.getName();
-    productTable.p
-
-}
-
 /**
  * 
  * Add companion function for the companion formelement
@@ -131,6 +109,34 @@ function initTable(){
     }
 }
 
+/**
+ * 
+ * Refresh the productlist table
+ * 
+ * @param {Companion} companion 
+ */
+function refreshProductList(companion){ //TODO
+
+    const companionName = document.getElementById('companion_name');
+    // TODO 10
+    companionName.style.display = 'block';
+    const productTable = document.getElementById('products');
+    productTable.style.display = 'table';
+    const productTableBody = productTable.querySelector('tbody')
+    productTableBody.innerHTML = '';
+    // TODO 10
+
+    companionName.innerHTML = companion.getName();
+
+    for (const product of companion.products){
+        const tr = document.createElement('tr');
+        productTableBody.appendChild(tr);
+        
+        const productcell = createCell(productTableBody);
+        productcell.innerHTML = product;
+    }
+}
+
 
 /**
  * 
@@ -142,4 +148,8 @@ function checkEventListener(e){
     const row = e.currentTarget.parentElement.parentElement;
     const companionId = row.id;
     // TODO 10
+
+    const companion = factory.getCompanionById(companionId);
+
+    refreshProductList(companion);
 }

@@ -14,6 +14,11 @@ class Factory{
         return this.manoklista.length;
     }
 
+    getCompanionById(Id){
+        const selectedMano = this.manoklista[Id];
+        return selectedMano;
+    }
+
 }
 
 class Companion{
@@ -33,5 +38,4 @@ class Companion{
     addProduct(product){
         this.products.push(product);
     }
-
 }
