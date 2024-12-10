@@ -40,12 +40,15 @@ function createCell(parentElement){
  * Append a new companion to the selector
  * 
  */
-function appendToSelector(){
+function appendToSelector(companion){
     const productForm = document.getElementById('product')
     const selector = productForm.querySelector('#companionlist');
 
     const option = document.createElement('option');
     // TODO 11.
+    option.id = companion.id;
+    option.value = companion.id;
+    option.innerHTML = companion.getName();
 
     selector.appendChild(option);
 }
@@ -85,7 +88,10 @@ function addProductForm(form, factory){ // TODO
     const productName = form.querySelector('#productname')
     const companionId = selector.value;
     const product = productName.value;
+    
     // 12
+
+    factory.addProductById(companionId, product);
 }
 
 /**

@@ -8,6 +8,7 @@ class Factory{
     addMano(mano){
         this.manoklista.push(mano);
         createRow(mano);
+        appendToSelector(mano);
     }
 
     createId(){
@@ -17,6 +18,12 @@ class Factory{
     getCompanionById(Id){
         const selectedMano = this.manoklista[Id];
         return selectedMano;
+    }
+
+    addProductById(compId, product){
+        const companion = this.getCompanionById(compId);
+        companion.addProduct(product);
+        refreshProductList(companion);
     }
 
 }
