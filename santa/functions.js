@@ -53,6 +53,18 @@ function appendToSelector(companion){
     selector.appendChild(option);
 }
 
+function appendAreaToSelector(areaName) {
+    const companionForm = document.getElementById('companion');
+    const areaSelector = companionForm.querySelector('#arealist');
+
+    const option = document.createElement('option');
+    option.value = areaName;
+    option.innerHTML = areaName;
+
+    areaSelector.appendChild(option);
+}
+
+
 /**
  * 
  * Add companion function for the companion formelement
@@ -62,7 +74,7 @@ function appendToSelector(companion){
 function addCompanion(form, factory){ //TODO 
     const firstName =form.querySelector('#cfirstname')
     const lastname =form.querySelector('#clastname')
-    const area = form.querySelector('#carea')
+    const area = form.querySelector('#arealist')
     const id = factory.createId();
 
     
@@ -92,6 +104,17 @@ function addProductForm(form, factory){ // TODO
     // 12
 
     factory.addProductById(companionId, product);
+}
+
+function addAreaForm(form){
+    const areaInput = form.querySelector('#careadd');
+    const areaName = areaInput.value;
+    if (areaName) {
+        appendAreaToSelector(areaName);
+    } 
+    else {
+        console.log('Részleg neve nem lehet üres.');
+    }
 }
 
 /**

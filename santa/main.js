@@ -41,10 +41,11 @@ document.getElementById('product').addEventListener('submit',function(e){
     addProductForm(form, factory)
 });
 
+document.getElementById('area').addEventListener('submit',function(e){
+    e.preventDefault();
+    const form = e.currentTarget;
+    addAreaForm(form)
+});
+
 
 initTable();
-
-
-
-
-/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
