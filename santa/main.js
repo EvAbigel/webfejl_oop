@@ -2,8 +2,8 @@
  * @type {{
  *   firstName: string;
  *   lastName: string;
- *   products: string[];
  *   area: string;
+ *   products: string[];
  * }[]}
  */
 const companionList = [
