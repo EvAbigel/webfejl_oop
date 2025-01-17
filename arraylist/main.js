@@ -15,10 +15,7 @@ class ArrayList{ //PascalCase, snake_case, Cebab_case, camelCase
     }
 
     AddElement(item){
-        const index = this.#count;  //így rövidebb lenne szerintem: this.#state[this.#count++] = item;
-        this.#state[index] = item; //kulcs és éerték
-        this.#count++;
-
+        this.#state[this.#count++] = item; //kulcs és érték
         console.log(this.#state)
     }
 
@@ -28,7 +25,17 @@ class ArrayList{ //PascalCase, snake_case, Cebab_case, camelCase
     }
 }
 
+//-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 const osztaly = new ArrayList();
+
 osztaly.AddElement('alma');
 osztaly.AddElement('barack');
+osztaly.AddElement({nev:'szőlő'});
+console.log(osztaly[0]);
+
 osztaly.Clear();
+
+const alma = {}
+Object.defineProperty(alma, 'nev', { value: "Ferenc", writable: true})  //alma objektumnál, a ferenc érték kulcsa a név lesz
+alma.nev = 'asd'
+console.log(alma);
