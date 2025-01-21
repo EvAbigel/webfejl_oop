@@ -25,14 +25,20 @@ class ArrayList{ //PascalCase, snake_case, Cebab_case, camelCase
             set:function(value)
             { 
                 this.#state[index] = value;
-            } 
+            },
+            configurable:true,
+            enumerable: true
         })
 
         this.#count++;
     }
 
     Clear(){
+        for (let key in this){
+            delete this[key];
+        }
         this.#state = {};
+        this.#count = 0;
         console.log(this.#state);
     }
 }
