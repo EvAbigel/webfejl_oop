@@ -39,7 +39,18 @@ class ArrayList{ //PascalCase, snake_case, Cebab_case, camelCase
         }
         this.#state = {};
         this.#count = 0;
+
         console.log(this.#state);
+    }
+
+    Contains(item){
+        for (let i = 0; i < this.#count; i++){
+            if (this[i] == item){
+                return true
+            }
+        }
+
+        return false;
     }
 }
 
@@ -47,9 +58,10 @@ class ArrayList{ //PascalCase, snake_case, Cebab_case, camelCase
 const osztaly = new ArrayList();
 
 osztaly.AddElement('alma');
+console.log(osztaly.Contains('alma')); //nekem működik külön változó alkotása nélkül? 
 osztaly.AddElement('barack');
 osztaly.AddElement({nev:'szőlő'});
-console.log(osztaly[0]);
+console.log(osztaly[0]); //ez az első eleme, nem? mindegy..
 console.log(osztaly[2]);
 
 osztaly.Clear();
