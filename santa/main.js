@@ -31,20 +31,20 @@ const factory = new Factory();
 
 document.getElementById('companion').addEventListener('submit',function(e){
     e.preventDefault();
-    const form =  e.currentTarget
+    const form =  e.currentTarget;
     addCompanion(form, factory);
 });
 
 document.getElementById('product').addEventListener('submit',function(e){
     e.preventDefault();
     const form = e.currentTarget;
-    addProductForm(form, factory)
+    addProductForm(form, factory);
 });
 
 document.getElementById('area').addEventListener('submit',function(e){
     e.preventDefault();
     const form = e.currentTarget;
-    addAreaForm(form)
+    addAreaForm(form);
 });
 
 

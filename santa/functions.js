@@ -19,7 +19,7 @@ function createRow(companion){
     const action = createCell(tableRow)
     const button = document.createElement('button');
     button.innerHTML = 'Megtekint';
-    action.appendChild(button)
+    action.appendChild(button);
     button.addEventListener('click', checkEventListener)
 }
 
@@ -41,7 +41,7 @@ function createCell(parentElement){
  * 
  */
 function appendToSelector(companion){
-    const productForm = document.getElementById('product')
+    const productForm = document.getElementById('product');
     const selector = productForm.querySelector('#companionlist');
 
     const option = document.createElement('option');
@@ -72,9 +72,9 @@ function appendAreaToSelector(areaName) {
  * @param {HTMLFormElement} form 
  */
 function addCompanion(form, factory){ //TODO 
-    const firstName =form.querySelector('#cfirstname')
-    const lastname =form.querySelector('#clastname')
-    const area = form.querySelector('#arealist')
+    const firstName =form.querySelector('#cfirstname');
+    const lastname =form.querySelector('#clastname');
+    const area = form.querySelector('#arealist');
     const id = factory.createId();
 
     
@@ -96,8 +96,8 @@ function addCompanion(form, factory){ //TODO
  */
 
 function addProductForm(form, factory){ // TODO
-    const selector =form.querySelector('#companionlist')
-    const productName = form.querySelector('#productname')
+    const selector =form.querySelector('#companionlist');
+    const productName = form.querySelector('#productname');
     const companionId = selector.value;
     const product = productName.value;
     
