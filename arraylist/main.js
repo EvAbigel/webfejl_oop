@@ -112,9 +112,10 @@ console.log(osztaly[2]);
 
 osztaly.Clear();
 
-
-
-// const alma = {}
-// Object.defineProperty(alma, 'nev', { value: "Ferenc", writable: true})  //alma objektumnál, a ferenc érték kulcsa a név lesz
-// alma.nev = 'asd'
-// console.log(alma);
+const button = document.createElement("button");
+button.innerHTML = "Hozzáadás";
+button.addEventListener("click", () => {
+    const element = {nev: "narancs", eletkor: 87};
+    osztaly.AddElement(element);
+});
+document.body.appendChild(button);
