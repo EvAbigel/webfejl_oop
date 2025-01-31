@@ -4,7 +4,7 @@ class ArrayList{ //PascalCase, snake_case, cebab-case, camelCase
      */
     #count  //azért nem kell le/const mert ez a class egy tulajdonsága
     #state
-    #arrayTable
+    #arraytable
 
     get Count(){
         return this.#count;
@@ -13,8 +13,7 @@ class ArrayList{ //PascalCase, snake_case, cebab-case, camelCase
     constructor(array = undefined){
         this.#count = 0;
         this.#state = {};
-        this.#arrayTable = array;
-
+        this.#arraytable = array;
     }
 
     AddElement(item){
@@ -25,7 +24,7 @@ class ArrayList{ //PascalCase, snake_case, cebab-case, camelCase
             { 
                 return this.#state[index]
             }, 
-            set: (value) =>
+            set:(value) =>
             { 
                 this.#state[index] = value;
             },
@@ -33,9 +32,8 @@ class ArrayList{ //PascalCase, snake_case, cebab-case, camelCase
             enumerable: true
         })
 
-        this.#arrayTable.addPersonRow(item);
-
         this.#count++;
+        this.#arraytable.addPersonRow(item);
     }
 
     Clear(){
@@ -60,12 +58,11 @@ class ArrayList{ //PascalCase, snake_case, cebab-case, camelCase
 
 class TableHTMLArray extends HTMLElement{
     #tbody
-    
     constructor(){
         super();
     }
-    
-    connectedCallback(){ //akkor fut le amikor a DOM tree hez hozzáadod
+
+    connectedCallback(){
         const table = document.createElement("table");
         this.appendChild(table);
         const thead = document.createElement("thead");
@@ -76,37 +73,34 @@ class TableHTMLArray extends HTMLElement{
 
     /**
      * 
-     * @param {{nev: String, eletkor: Number}} person 
+     * @param {{nev: String, eletkor: number}} person 
      */
     addPersonRow(person){
-        const row = document.createElement("tr");
-        this.#tbody.appendChild(row);
-
-        createHTMLTableElement("td", person.nev, this.#tbody);
-        createHTMLTableElement("td", person.eletkor, this.#tbody);
-
+        const trow = document.createElement("tr");
+        this.#tbody.appendChild(trow);
+        const tdnev = document.createElement("td");
+        tdnev.innerHTML = person.nev;
+        trow.appendChild(tdnev);
+        const tdeletkor = document.createElement("td");
+        tdeletkor.innerHTML = person.eletkor;
+        trow.appendChild(tdeletkor);
     }
 }
+
 customElements.define("array-table", TableHTMLArray);
 
-
-function createHTMLTableElement(tag, innerH, parent){
-    const element = document.createElement(tag);
-    element.innerHTML = innerH;
-    parent.appendChild(element);
-}
-
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-const newArray = new TableHTMLArray();
-document.body.appendChild(newArray);
-newArray.addPersonRow({nev:"Lili", eletkor:22});
+const tablearray = new TableHTMLArray();
+document.body.appendChild(tablearray);
+tablearray.addPersonRow({nev: "korte", eletkor: 12});
 
-const osztaly = new ArrayList(newArray);
+const osztaly = new ArrayList(tablearray);
 
-osztaly.AddElement({nev:'alma', eletkor: 33});
-console.log(osztaly.Contains('alma')); //nekem működik külön változó alkotása nélkül? 
+osztaly.AddElement({nev: 'alma', eletkor: 18});
+console.log(osztaly.Contains('alma')); //nekem működik külön változó alkotása nélkül?
+
 osztaly.AddElement({nev:'barack', eletkor: 11});
-osztaly.AddElement({nev:'szőlő', eletkor: 22});
+osztaly.AddElement({nev:'szőlő', eletkor: 2});
 console.log(osztaly[0]); //ez az első eleme, nem? mindegy..
 console.log(osztaly[2]);
 
