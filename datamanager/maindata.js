@@ -90,25 +90,34 @@ class DataManager{
 class DataTable{
 
     /**
+     * @type {HTMLTableElement}
+     */
+    #tbody
+
+    /**
      * 
      * @param {DataManager} dataManager 
      */
     constructor(dataManager){ //table, tbody alkotása
         const table = createElement("table", document.body);
-        const tbody = createElement("tbody", table);
+        this.#tbody = createElement("tbody", table);
 
         dataManager.setUpdateCallback(persons => {
-            tbody.innerHTML = "";
+            this.#renderTable(persons);
+        });
+    }
+
+    #renderTable(persons){
+        this.#tbody.innerHTML = "";
 
             for (let elem of persons){
-                const tr = createElement("tr", tbody);
+                const tr = createElement("tr", this.#tbody);
 
                 const td = createElement("td", tr);
                 td.innerHTML = elem.nev;
                 const td2 = createElement("td", tr);
                 td2.innerHTML = elem.eletkor;
             }
-        });
     }
 }
 
@@ -117,6 +126,10 @@ function createElement(type, parent){
     parent.appendChild(element);
 
     return element;
+}
+
+function addBreak(){
+    createElement("br", document.body);
 }
 
 
@@ -141,7 +154,27 @@ const data = new DataManager(emberek);
 const dataTable = new DataTable(data);
 
 
-data.filterName("Teri");
-data.filterAge(17); //az marad ami teljesül
+//data.filterName("Teri");
+//data.filterAge(17); //az marad ami teljesül
 
-//-
+const label1 = createElement("label", document.body);
+label1.innerHTML = "Név:";
+
+addBreak();
+
+const nevinput = createElement("input", document.body);
+nevinput.addEventListener("input", (event) => {
+    data.filterName(event.target.value);
+})
+
+addBreak();
+
+const label2 = createElement("label", document.body);
+label2.innerHTML = "Kor:";
+
+addBreak();
+
+const korinput = createElement("input", document.body);
+korinput.addEventListener("input", (event) => {
+    data.filterAge(Number(event.target.value));
+})
