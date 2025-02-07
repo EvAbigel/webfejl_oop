@@ -54,7 +54,7 @@ class DataManager{
         let talale = false;
 
         for (let i = 0; i < this.#array.length; i++){
-            if (this.#array[i].nev.includes(name)){
+            if (this.#array[i].nev.toLowerCase().includes(name.toLowerCase())){
                 result.push(this.#array[i]);
                 talale = true;
             }
@@ -77,6 +77,19 @@ class DataManager{
             if (this.#array[i].eletkor === age){
                 result.push(this.#array[i]);
                 talale = true;
+            }
+        }
+
+        this.#updateCallback(result);
+        console.log(result);
+    }
+
+    filter(filterCallback){
+        const result = [];
+        
+        for (let i = 0; i < this.#array.length; i++){   //for offal is lehet
+            if (filterCallback(this.#array[i])){
+                result.push(this.#array[i]);
             }
         }
 
@@ -150,7 +163,7 @@ const emberek = [
     }
 ]
 
-const data = new DataManager(emberek);
+const data= new DataManager(emberek);
 const dataTable = new DataTable(data);
 
 
@@ -176,5 +189,44 @@ addBreak();
 
 const korinput = createElement("input", document.body);
 korinput.addEventListener("input", (event) => {
-    data.filterAge(Number(event.target.value));
+    data.filter((person) => {
+        return person.eletkor === Number(event.target.value);
+    })
 })
+addBreak();
+
+/**
+ * tallóztunk
+ * majd change event
+ * majd readastext
+ * kaptunk egy load-ot
+ * 
+ * ez mind majd freader.result -> ebben lesz a string
+ */
+
+const inputField = document.createElement("input");
+inputField.type = "file";
+document.body.appendChild(inputField);
+
+inputField.addEventListener("change", (event)=>{
+    const file = event.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.readAsText(file); //küld egy eseményt, azt kell felhasználni, minden egy db string
+    fileReader.onload = () =>{ //akkor fut le amikor readastext késze van, lehet hogy sokkal később
+        const stringErtek = fileReader.result; //result az string
+        const array = stringErtek.split("\n");
+
+        for (const elem of array){
+            const data56 = elem.split(";");
+
+            const person = {
+                nev: data56[0],
+                eletkor: Number(data56[1])
+            }
+
+            data.add(person);
+
+        }
+    }
+});
+
