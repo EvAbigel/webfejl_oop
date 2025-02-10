@@ -98,16 +98,16 @@ class DataManager{
     }
 
     orderByAge(){
-        const temparray = this.#array.slice();
-        temparray.sort((a, b) => b.eletkor - a.eletkor)
- 
-        console.log(temparray);
-        return temparray;
+        return this.order((a, b) => b.eletkor - a.eletkor);
     }
  
     orderByName(){
+        return this.order((a, b) => b.nev.localeCompare(a.nev));
+    }
+
+    order(orderCallback){
         const temparray = this.#array.slice();
-        temparray.sort((a, b) => b.nev.localeCompare(a.nev))
+        temparray.sort(orderCallback)
  
         console.log(temparray);
         return temparray;
