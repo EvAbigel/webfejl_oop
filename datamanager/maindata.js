@@ -97,6 +97,22 @@ class DataManager{
         console.log(result);
     }
 
+    orderByAge(){
+        const temparray = this.#array.slice();
+        temparray.sort((a, b) => b.eletkor - a.eletkor)
+ 
+        console.log(temparray);
+        return temparray;
+    }
+ 
+    orderByName(){
+        const temparray = this.#array.slice();
+        temparray.sort((a, b) => b.nev.localeCompare(a.nev))
+ 
+        console.log(temparray);
+        return temparray;
+    }
+
 }
 
 
@@ -113,6 +129,23 @@ class DataTable{
      */
     constructor(dataManager){ //table, tbody alkotása
         const table = createElement("table", document.body);
+        const thead  = createElement("thead", table);
+        const tr = createElement("tr", thead);
+
+        const th1 = createElement("th", tr);
+        th1.innerHTML = "Név"
+        th1.addEventListener("click", () => {
+            const sortedData = dataManager.orderByName(); 
+            this.#renderTable(sortedData);
+        })
+
+        const th2 = createElement("th", tr);
+        th2.innerHTML = "Kor";
+        th2.addEventListener("click", () => {
+            const sortedData = dataManager.orderByAge(); 
+            this.#renderTable(sortedData);
+        })
+
         this.#tbody = createElement("tbody", table);
 
         dataManager.setUpdateCallback(persons => {
