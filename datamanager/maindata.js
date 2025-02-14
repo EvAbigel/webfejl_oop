@@ -51,12 +51,10 @@ class DataManager{
      */
     filterName(name){ //strig param, keresi a nevet
         const result = [];
-        let talale = false;
 
         for (let i = 0; i < this.#array.length; i++){
             if (this.#array[i].nev.toLowerCase().includes(name.toLowerCase())){
                 result.push(this.#array[i]);
-                talale = true;
             }
         }
 
@@ -71,12 +69,10 @@ class DataManager{
      */
     filterAge(age){ //Number param, keresi a kort
         const result = [];
-        let talale = false;
         
         for (let i = 0; i < this.#array.length; i++){   //for offal is lehet
             if (this.#array[i].eletkor === age){
                 result.push(this.#array[i]);
-                talale = true;
             }
         }
 
