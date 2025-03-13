@@ -5,6 +5,7 @@ class Manager{
 
     constructor(){
         this.#array = [];
+        this.#addCallback = () => {};
     }
 
     setAddCallback(callback){
@@ -16,7 +17,8 @@ class Manager{
     }
 
     add(student){
-        this.#array.push(student);   
+        this.#array.push(student);
+        this.#addCallback(student);  
     }
 
     select(student){
@@ -38,4 +40,6 @@ class Manager{
             this.#addCallback(student);
         }
     }
+
+    
 }
